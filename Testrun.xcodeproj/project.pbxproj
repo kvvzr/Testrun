@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F327B731963FAAE00C82CC1 /* UIColor+Twinkrun.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F327B721963FAAE00C82CC1 /* UIColor+Twinkrun.m */; };
 		8FE7930E19616CDC002CA1A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE7930D19616CDC002CA1A4 /* Foundation.framework */; };
 		8FE7931019616CDC002CA1A4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE7930F19616CDC002CA1A4 /* CoreGraphics.framework */; };
 		8FE7931219616CDC002CA1A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE7931119616CDC002CA1A4 /* UIKit.framework */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F327B711963FAAE00C82CC1 /* UIColor+Twinkrun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Twinkrun.h"; sourceTree = "<group>"; };
+		8F327B721963FAAE00C82CC1 /* UIColor+Twinkrun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Twinkrun.m"; sourceTree = "<group>"; };
 		8FE7930A19616CDC002CA1A4 /* Testrun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Testrun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FE7930D19616CDC002CA1A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8FE7930F19616CDC002CA1A4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -115,6 +118,8 @@
 				8FE7931C19616CDC002CA1A4 /* TWRAppDelegate.h */,
 				8FE7931D19616CDC002CA1A4 /* TWRAppDelegate.m */,
 				8FE7931F19616CDC002CA1A4 /* Main.storyboard */,
+				8F327B711963FAAE00C82CC1 /* UIColor+Twinkrun.h */,
+				8F327B721963FAAE00C82CC1 /* UIColor+Twinkrun.m */,
 				8FE7932219616CDC002CA1A4 /* TWRViewController.h */,
 				8FE7932319616CDC002CA1A4 /* TWRViewController.m */,
 				8FE7932519616CDC002CA1A4 /* Images.xcassets */,
@@ -253,6 +258,7 @@
 				8FE7932419616CDC002CA1A4 /* TWRViewController.m in Sources */,
 				8FE7931E19616CDC002CA1A4 /* TWRAppDelegate.m in Sources */,
 				8FE7931A19616CDC002CA1A4 /* main.m in Sources */,
+				8F327B731963FAAE00C82CC1 /* UIColor+Twinkrun.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +463,7 @@
 				8FE7933E19616CDC002CA1A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8FE7933F19616CDC002CA1A4 /* Build configuration list for PBXNativeTarget "TestrunTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +472,7 @@
 				8FE7934119616CDC002CA1A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

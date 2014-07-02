@@ -7,6 +7,7 @@
 //
 
 #import "TWRViewController.h"
+#import "UIColor+Twinkrun.h"
 
 @interface TWRViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -28,7 +29,9 @@
        [NSIndexPath indexPathForRow:0 inSection:0]: @{
             @"identifier": @"upDownCell",
             @"name": @"Time",
-            @"default": @"0:30",
+            @"default": @30,
+            @"min": @0,
+            @"max": @180,
             @"step": @10,
             @"stepped": ^(){},
         },
@@ -36,6 +39,8 @@
             @"identifier": @"upDownCell",
             @"name": @"Pink",
             @"default": @0,
+            @"min": @0,
+            @"max": @10,
             @"step": @1,
             @"stepped": ^(){},
         },
@@ -43,13 +48,18 @@
             @"identifier": @"upDownCell",
             @"name": @"Red",
             @"default": @4,
+            @"min": @0,
+            @"max": @10,
             @"step": @1,
+            @"color": [[UIColor twinkrunRed] colorWithAlphaComponent:0.5],
             @"stepped": ^(){},
         },
         [NSIndexPath indexPathForRow:2 inSection:0]: @{
             @"identifier": @"upDownCell",
             @"name": @"Orange",
             @"default": @0,
+            @"min": @0,
+            @"max": @10,
             @"step": @1,
             @"stepped": ^(){},
         },
@@ -57,6 +67,8 @@
             @"identifier": @"upDownCell",
             @"name": @"Yellow",
             @"default": @0,
+            @"min": @0,
+            @"max": @10,
             @"step": @1,
             @"stepped": ^(){},
         },
@@ -64,13 +76,18 @@
             @"identifier": @"upDownCell",
             @"name": @"Green",
             @"default": @3,
+            @"min": @0,
+            @"max": @10,
             @"step": @1,
+            @"color": [[UIColor twinkrunGreen] colorWithAlphaComponent:0.5],
             @"stepped": ^(){},
         },
         [NSIndexPath indexPathForRow:5 inSection:0]: @{
             @"identifier": @"upDownCell",
             @"name": @"Cyan",
             @"default": @0,
+            @"min": @0,
+            @"max": @10,
             @"step": @1,
             @"stepped": ^(){},
         },
@@ -78,6 +95,8 @@
             @"identifier": @"upDownCell",
             @"name": @"Blue",
             @"default": @0,
+            @"min": @0,
+            @"max": @10,
             @"step": @1,
             @"stepped": ^(){},
         },
@@ -85,6 +104,8 @@
             @"identifier": @"upDownCell",
             @"name": @"Violet",
             @"default": @0,
+            @"min": @0,
+            @"max": @10,
             @"step": @1,
             @"stepped": ^(){},
         },
@@ -92,14 +113,20 @@
             @"identifier": @"upDownCell",
             @"name": @"Black",
             @"default": @3,
+            @"min": @0,
+            @"max": @10,
             @"step": @1,
+            @"color": [[UIColor twinkrunBlack] colorWithAlphaComponent:0.5],
             @"stepped": ^(){},
         },
         [NSIndexPath indexPathForRow:9 inSection:0]: @{
             @"identifier": @"upDownCell",
             @"name": @"White",
             @"default": @0,
+            @"min": @0,
+            @"max": @10,
             @"step": @1,
+            @"color": [[UIColor twinkrunWhite] colorWithAlphaComponent:0.5],
             @"stepped": ^(){},
         },
     };
@@ -126,6 +153,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:content[@"identifier"]];
     
     UIStepper *stepper = (UIStepper * )[cell viewWithTag:1];
+    [stepper setValue:[(NSNumber *)content[@"default"] doubleValue]];
+    [stepper setMinimumValue:[(NSNumber *)content[@"min"] doubleValue]];
+    [stepper setMaximumValue:[(NSNumber *)content[@"max"] doubleValue]];
+    [stepper setStepValue:[(NSNumber *)content[@"step"] doubleValue]];
     
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:2];
     [nameLabel setText:content[@"name"]];
