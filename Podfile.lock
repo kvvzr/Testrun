@@ -1,0 +1,13 @@
+PODS:
+  - Canvas (0.1.1)
+  - ObjectAL-for-iPhone (2.4)
+
+DEPENDENCIES:
+  - Canvas
+  - ObjectAL-for-iPhone
+
+SPEC CHECKSUMS:
+  Canvas: 45356a2e61087a776bfde5090676d290cf67f7f2
+  ObjectAL-for-iPhone: 305e0d4548ed5897eab08a6e1cc1f6589213cc28
+
+COCOAPODS: 0.33.1

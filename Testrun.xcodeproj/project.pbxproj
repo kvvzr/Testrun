@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4ED1D9ADEE134A3CAA88069C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09529D9A2B95457BB4328EBF /* libPods.a */; };
 		8F327B731963FAAE00C82CC1 /* UIColor+Twinkrun.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F327B721963FAAE00C82CC1 /* UIColor+Twinkrun.m */; };
 		8F327B7D19645E2D00C82CC1 /* UIStepper+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F327B7C19645E2D00C82CC1 /* UIStepper+Block.m */; };
 		8FE7930E19616CDC002CA1A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE7930D19616CDC002CA1A4 /* Foundation.framework */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09529D9A2B95457BB4328EBF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8601E31D219F4C0B89783D92 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		8F327B711963FAAE00C82CC1 /* UIColor+Twinkrun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Twinkrun.h"; sourceTree = "<group>"; };
 		8F327B721963FAAE00C82CC1 /* UIColor+Twinkrun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Twinkrun.m"; sourceTree = "<group>"; };
 		8F327B7B1964398400C82CC1 /* UIStepper+Block.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIStepper+Block.h"; sourceTree = "<group>"; };
@@ -69,6 +72,7 @@
 				8FE7931019616CDC002CA1A4 /* CoreGraphics.framework in Frameworks */,
 				8FE7931219616CDC002CA1A4 /* UIKit.framework in Frameworks */,
 				8FE7930E19616CDC002CA1A4 /* Foundation.framework in Frameworks */,
+				4ED1D9ADEE134A3CAA88069C /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +96,7 @@
 				8FE7933219616CDC002CA1A4 /* TestrunTests */,
 				8FE7930C19616CDC002CA1A4 /* Frameworks */,
 				8FE7930B19616CDC002CA1A4 /* Products */,
+				8601E31D219F4C0B89783D92 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +116,7 @@
 				8FE7930F19616CDC002CA1A4 /* CoreGraphics.framework */,
 				8FE7931119616CDC002CA1A4 /* UIKit.framework */,
 				8FE7932C19616CDC002CA1A4 /* XCTest.framework */,
+				09529D9A2B95457BB4328EBF /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -169,9 +175,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8FE7933C19616CDC002CA1A4 /* Build configuration list for PBXNativeTarget "Testrun" */;
 			buildPhases = (
+				1A90C609D50A4C44B447A711 /* Check Pods Manifest.lock */,
 				8FE7930619616CDC002CA1A4 /* Sources */,
 				8FE7930719616CDC002CA1A4 /* Frameworks */,
 				8FE7930819616CDC002CA1A4 /* Resources */,
+				15162C46515D4746A9CA2153 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,6 +262,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		15162C46515D4746A9CA2153 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1A90C609D50A4C44B447A711 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8FE7930619616CDC002CA1A4 /* Sources */ = {
@@ -386,12 +427,14 @@
 		};
 		8FE7933D19616CDC002CA1A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8601E31D219F4C0B89783D92 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Testrun/Testrun-Prefix.pch";
 				INFOPLIST_FILE = "Testrun/Testrun-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -399,12 +442,14 @@
 		};
 		8FE7933E19616CDC002CA1A4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8601E31D219F4C0B89783D92 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Testrun/Testrun-Prefix.pch";
 				INFOPLIST_FILE = "Testrun/Testrun-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
