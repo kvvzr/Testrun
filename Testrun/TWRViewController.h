@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TWRViewController : UIViewController
+@interface TWRViewController : UITableViewController
 
 @end
