@@ -14,5 +14,11 @@
 + (UIColor *)twinkrunRed;
 + (UIColor *)twinkrunGreen;
 + (UIColor *)twinkrunWhite;
++ (UIColor *)twinkrunPink;
++ (UIColor *)twinkrunOrange;
++ (UIColor *)twinkrunYellow;
++ (UIColor *)twinkrunCyan;
++ (UIColor *)twinkrunBlue;
++ (UIColor *)twinkrunViolet;
 
 @end

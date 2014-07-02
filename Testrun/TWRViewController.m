@@ -12,7 +12,7 @@
 
 @interface TWRViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) NSDictionary *cells;
+@property (nonatomic, strong) NSArray *cells;
 
 @end
 
@@ -36,111 +36,230 @@
         [target setText:[NSString stringWithFormat:@"%02d:%02d", m, s]];
     };
     
-    self.cells = @{
-       [NSIndexPath indexPathForRow:0 inSection:0]: @{
-            @"identifier": @"upDownCell",
-            @"name": @"Time",
-            @"default": @30,
-            @"min": @10,
-            @"max": @180,
-            @"step": @10,
-            @"redrawTarget": timeFormat,
-        },
-        [NSIndexPath indexPathForRow:0 inSection:0]: @{
-            @"identifier": @"upDownCell",
-            @"name": @"Pink",
-            @"default": @0,
-            @"min": @0,
-            @"max": @10,
-            @"step": @1,
-            @"redrawTarget": defaultFormat,
-        },
-        [NSIndexPath indexPathForRow:1 inSection:0]: @{
-            @"identifier": @"upDownCell",
-            @"name": @"Red",
-            @"default": @4,
-            @"min": @0,
-            @"max": @10,
-            @"step": @1,
-            @"color": [[UIColor twinkrunRed] colorWithAlphaComponent:0.5],
-            @"redrawTarget": defaultFormat,
-        },
-        [NSIndexPath indexPathForRow:2 inSection:0]: @{
-            @"identifier": @"upDownCell",
-            @"name": @"Orange",
-            @"default": @0,
-            @"min": @0,
-            @"max": @10,
-            @"step": @1,
-            @"redrawTarget": defaultFormat,
-        },
-        [NSIndexPath indexPathForRow:3 inSection:0]: @{
-            @"identifier": @"upDownCell",
-            @"name": @"Yellow",
-            @"default": @0,
-            @"min": @0,
-            @"max": @10,
-            @"step": @1,
-            @"redrawTarget": defaultFormat,
-        },
-        [NSIndexPath indexPathForRow:4 inSection:0]: @{
-            @"identifier": @"upDownCell",
-            @"name": @"Green",
-            @"default": @3,
-            @"min": @0,
-            @"max": @10,
-            @"step": @1,
-            @"color": [[UIColor twinkrunGreen] colorWithAlphaComponent:0.5],
-            @"redrawTarget": defaultFormat,
-        },
-        [NSIndexPath indexPathForRow:5 inSection:0]: @{
-            @"identifier": @"upDownCell",
-            @"name": @"Cyan",
-            @"default": @0,
-            @"min": @0,
-            @"max": @10,
-            @"step": @1,
-            @"redrawTarget": defaultFormat,
-        },
-        [NSIndexPath indexPathForRow:6 inSection:0]: @{
-            @"identifier": @"upDownCell",
-            @"name": @"Blue",
-            @"default": @0,
-            @"min": @0,
-            @"max": @10,
-            @"step": @1,
-            @"redrawTarget": defaultFormat,
-        },
-        [NSIndexPath indexPathForRow:7 inSection:0]: @{
-            @"identifier": @"upDownCell",
-            @"name": @"Violet",
-            @"default": @0,
-            @"min": @0,
-            @"max": @10,
-            @"step": @1,
-            @"redrawTarget": defaultFormat,
-        },
-        [NSIndexPath indexPathForRow:8 inSection:0]: @{
-            @"identifier": @"upDownCell",
-            @"name": @"Black",
-            @"default": @3,
-            @"min": @0,
-            @"max": @10,
-            @"step": @1,
-            @"color": [[UIColor twinkrunBlack] colorWithAlphaComponent:0.5],
-            @"redrawTarget": defaultFormat,
-        },
-        [NSIndexPath indexPathForRow:9 inSection:0]: @{
-            @"identifier": @"upDownCell",
-            @"name": @"White",
-            @"default": @0,
-            @"min": @0,
-            @"max": @10,
-            @"step": @1,
-            @"color": [[UIColor twinkrunWhite] colorWithAlphaComponent:0.5],
-            @"redrawTarget": defaultFormat,
-        },
-    };
+    self.cells = @[ // sections
+                    @[ // rows
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Pink",
+                           @"default": @0,
+                           @"min": @0,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunPink] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunBlack],
+                           @"redrawTarget": defaultFormat,
+                        },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Time",
+                           @"default": @3,
+                           @"min": @1,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunPink] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunBlack],
+                           @"redrawTarget": timeFormat,
+                        },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Red",
+                           @"default": @4,
+                           @"min": @0,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunRed] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunBlack],
+                           @"redrawTarget": defaultFormat,
+                        },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Time",
+                           @"default": @3,
+                           @"min": @1,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunRed] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunBlack],
+                           @"redrawTarget": timeFormat,
+                        },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Orange",
+                           @"default": @0,
+                           @"min": @0,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunOrange] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunBlack],
+                           @"redrawTarget": defaultFormat,
+                        },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Time",
+                           @"default": @3,
+                           @"min": @1,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunOrange] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunBlack],
+                           @"redrawTarget": timeFormat,
+                        },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Yellow",
+                           @"default": @0,
+                           @"min": @0,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunYellow] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunBlack],
+                           @"redrawTarget": defaultFormat,
+                        },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Time",
+                           @"default": @3,
+                           @"min": @1,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunYellow] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunBlack],
+                           @"redrawTarget": timeFormat,
+                        },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Green",
+                           @"default": @3,
+                           @"min": @0,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunGreen] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunBlack],
+                           @"redrawTarget": defaultFormat,
+                        },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Time",
+                           @"default": @3,
+                           @"min": @1,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunGreen] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunBlack],
+                           @"redrawTarget": timeFormat,
+                        },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Cyan",
+                           @"default": @0,
+                           @"min": @0,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunCyan] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunBlack],
+                           @"redrawTarget": defaultFormat,
+                        },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Time",
+                           @"default": @3,
+                           @"min": @1,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunCyan] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunBlack],
+                           @"redrawTarget": timeFormat,
+                        },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Blue",
+                           @"default": @0,
+                           @"min": @0,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunBlue] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunWhite],
+                           @"redrawTarget": defaultFormat,
+                        },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Time",
+                           @"default": @3,
+                           @"min": @1,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunBlue] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunWhite],
+                           @"redrawTarget": timeFormat,
+                           },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Violet",
+                           @"default": @0,
+                           @"min": @0,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunViolet] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunWhite],
+                           @"redrawTarget": defaultFormat,
+                        },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Time",
+                           @"default": @3,
+                           @"min": @1,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunViolet] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunWhite],
+                           @"redrawTarget": timeFormat,
+                        },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Black",
+                           @"default": @3,
+                           @"min": @0,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunBlack] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunWhite],
+                           @"redrawTarget": defaultFormat,
+                        },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Time",
+                           @"default": @3,
+                           @"min": @1,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunBlack] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunWhite],
+                           @"redrawTarget": timeFormat,
+                        },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"White",
+                           @"default": @0,
+                           @"min": @0,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunWhite] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunBlack],
+                           @"redrawTarget": defaultFormat,
+                        },
+                       @{
+                           @"identifier": @"upDownCell",
+                           @"name": @"Time",
+                           @"default": @3,
+                           @"min": @1,
+                           @"max": @10,
+                           @"step": @1,
+                           @"color": [[UIColor twinkrunWhite] colorWithAlphaComponent:0.5],
+                           @"tintColor": [UIColor twinkrunBlack],
+                           @"redrawTarget": timeFormat,
+                        },
+                    ]
+                ];
 }
 
 - (void)didReceiveMemoryWarning
@@ -151,28 +270,36 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return self.cells.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.cells.count;
+    int count = 0;
+    for (NSArray *array in self.cells) {
+        count += array.count;
+    }
+    return count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSMutableDictionary *content = self.cells[indexPath];
+    NSMutableDictionary *content = self.cells[indexPath.section][indexPath.row];
+    UIColor *tintColor = content[@"tintColor"];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:content[@"identifier"]];
     
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:2];
     [nameLabel setText:content[@"name"]];
+    [nameLabel setTextColor:tintColor];
     
     UILabel *valueLabel = (UILabel *)[cell viewWithTag:3];
     NSString *value = [NSString stringWithFormat:@"%@", content[@"default"]];
     [valueLabel setText:value];
+    [valueLabel setTextColor:tintColor];
     
     UIStepper *stepper = (UIStepper * )[cell viewWithTag:1];
     [stepper setValue:[(NSNumber *)content[@"default"] doubleValue]];
+    [stepper setTintColor:tintColor];
     [stepper setMinimumValue:[(NSNumber *)content[@"min"] doubleValue]];
     [stepper setMaximumValue:[(NSNumber *)content[@"max"] doubleValue]];
     [stepper setStepValue:[(NSNumber *)content[@"step"] doubleValue]];
