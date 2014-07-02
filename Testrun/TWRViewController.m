@@ -8,10 +8,11 @@
 
 #import "TWRViewController.h"
 #import "UIColor+Twinkrun.h"
+#import "UIStepper+Block.h"
 
 @interface TWRViewController () <UITableViewDelegate, UITableViewDataSource>
 
-@property (strong) NSDictionary *cells;
+@property (nonatomic, strong) NSDictionary *cells;
 
 @end
 
@@ -25,15 +26,25 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
+    RedrawTarget defaultFormat = ^(UILabel *target, double value){
+        [target setText:[NSString stringWithFormat:@"%d", (int)value]];
+    };
+    
+    RedrawTarget timeFormat = ^(UILabel *target, double value){
+        int m = (int) value / 60;
+        int s = (int) value % 60;
+        [target setText:[NSString stringWithFormat:@"%02d:%02d", m, s]];
+    };
+    
     self.cells = @{
        [NSIndexPath indexPathForRow:0 inSection:0]: @{
             @"identifier": @"upDownCell",
             @"name": @"Time",
             @"default": @30,
-            @"min": @0,
+            @"min": @10,
             @"max": @180,
             @"step": @10,
-            @"stepped": ^(){},
+            @"redrawTarget": timeFormat,
         },
         [NSIndexPath indexPathForRow:0 inSection:0]: @{
             @"identifier": @"upDownCell",
@@ -42,7 +53,7 @@
             @"min": @0,
             @"max": @10,
             @"step": @1,
-            @"stepped": ^(){},
+            @"redrawTarget": defaultFormat,
         },
         [NSIndexPath indexPathForRow:1 inSection:0]: @{
             @"identifier": @"upDownCell",
@@ -52,7 +63,7 @@
             @"max": @10,
             @"step": @1,
             @"color": [[UIColor twinkrunRed] colorWithAlphaComponent:0.5],
-            @"stepped": ^(){},
+            @"redrawTarget": defaultFormat,
         },
         [NSIndexPath indexPathForRow:2 inSection:0]: @{
             @"identifier": @"upDownCell",
@@ -61,7 +72,7 @@
             @"min": @0,
             @"max": @10,
             @"step": @1,
-            @"stepped": ^(){},
+            @"redrawTarget": defaultFormat,
         },
         [NSIndexPath indexPathForRow:3 inSection:0]: @{
             @"identifier": @"upDownCell",
@@ -70,7 +81,7 @@
             @"min": @0,
             @"max": @10,
             @"step": @1,
-            @"stepped": ^(){},
+            @"redrawTarget": defaultFormat,
         },
         [NSIndexPath indexPathForRow:4 inSection:0]: @{
             @"identifier": @"upDownCell",
@@ -80,7 +91,7 @@
             @"max": @10,
             @"step": @1,
             @"color": [[UIColor twinkrunGreen] colorWithAlphaComponent:0.5],
-            @"stepped": ^(){},
+            @"redrawTarget": defaultFormat,
         },
         [NSIndexPath indexPathForRow:5 inSection:0]: @{
             @"identifier": @"upDownCell",
@@ -89,7 +100,7 @@
             @"min": @0,
             @"max": @10,
             @"step": @1,
-            @"stepped": ^(){},
+            @"redrawTarget": defaultFormat,
         },
         [NSIndexPath indexPathForRow:6 inSection:0]: @{
             @"identifier": @"upDownCell",
@@ -98,7 +109,7 @@
             @"min": @0,
             @"max": @10,
             @"step": @1,
-            @"stepped": ^(){},
+            @"redrawTarget": defaultFormat,
         },
         [NSIndexPath indexPathForRow:7 inSection:0]: @{
             @"identifier": @"upDownCell",
@@ -107,7 +118,7 @@
             @"min": @0,
             @"max": @10,
             @"step": @1,
-            @"stepped": ^(){},
+            @"redrawTarget": defaultFormat,
         },
         [NSIndexPath indexPathForRow:8 inSection:0]: @{
             @"identifier": @"upDownCell",
@@ -117,7 +128,7 @@
             @"max": @10,
             @"step": @1,
             @"color": [[UIColor twinkrunBlack] colorWithAlphaComponent:0.5],
-            @"stepped": ^(){},
+            @"redrawTarget": defaultFormat,
         },
         [NSIndexPath indexPathForRow:9 inSection:0]: @{
             @"identifier": @"upDownCell",
@@ -127,7 +138,7 @@
             @"max": @10,
             @"step": @1,
             @"color": [[UIColor twinkrunWhite] colorWithAlphaComponent:0.5],
-            @"stepped": ^(){},
+            @"redrawTarget": defaultFormat,
         },
     };
 }
@@ -143,7 +154,8 @@
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.cells.count;
 }
 
@@ -152,12 +164,6 @@
     NSMutableDictionary *content = self.cells[indexPath];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:content[@"identifier"]];
     
-    UIStepper *stepper = (UIStepper * )[cell viewWithTag:1];
-    [stepper setValue:[(NSNumber *)content[@"default"] doubleValue]];
-    [stepper setMinimumValue:[(NSNumber *)content[@"min"] doubleValue]];
-    [stepper setMaximumValue:[(NSNumber *)content[@"max"] doubleValue]];
-    [stepper setStepValue:[(NSNumber *)content[@"step"] doubleValue]];
-    
     UILabel *nameLabel = (UILabel *)[cell viewWithTag:2];
     [nameLabel setText:content[@"name"]];
     
@@ -165,9 +171,24 @@
     NSString *value = [NSString stringWithFormat:@"%@", content[@"default"]];
     [valueLabel setText:value];
     
+    UIStepper *stepper = (UIStepper * )[cell viewWithTag:1];
+    [stepper setValue:[(NSNumber *)content[@"default"] doubleValue]];
+    [stepper setMinimumValue:[(NSNumber *)content[@"min"] doubleValue]];
+    [stepper setMaximumValue:[(NSNumber *)content[@"max"] doubleValue]];
+    [stepper setStepValue:[(NSNumber *)content[@"step"] doubleValue]];
+    [stepper addTarget:self action:@selector(stepped:) forControlEvents:UIControlEventValueChanged];
+    [stepper setTarget:valueLabel];
+    [stepper setBlock:content[@"redrawTarget"]];
+    [stepper redrawTarget];
+    
     [cell setBackgroundColor:content[@"color"]];
     
     return cell;
+}
+
+- (void)stepped:(UIStepper *)sender
+{
+    [sender redrawTarget];
 }
 
 @end
