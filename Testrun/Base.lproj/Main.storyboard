@@ -68,7 +68,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="ready:" destination="b23-9E-OBb" eventType="touchUpInside" id="tcd-dY-GQ7"/>
+                                    <segue destination="9gx-lt-xgq" kind="push" identifier="goMatchSegue" id="jsG-SJ-yAt"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -93,7 +93,222 @@
             </objects>
             <point key="canvasLocation" x="68" y="198"/>
         </scene>
+        <!--Match View Controller - Match-->
+        <scene sceneID="fbz-U6-aAU">
+            <objects>
+                <viewController id="9gx-lt-xgq" customClass="TWRMatchViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E9l-ww-5v7"/>
+                        <viewControllerLayoutGuide type="bottom" id="rpE-sn-Gl3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V8b-7s-Olg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3g6-87-sau">
+                                <rect key="frame" x="80" y="204" width="160" height="160"/>
+                                <state key="normal" image="StartMatchButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startButtonTouched:" destination="9gx-lt-xgq" eventType="touchUpInside" id="vR4-Z9-rfL"/>
+                                </connections>
+                            </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ptj-Xs-GJg" customClass="CSAnimationView">
+                                <rect key="frame" x="43" y="352" width="133" height="171"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LeftBottomPhone" translatesAutoresizingMaskIntoConstraints="NO" id="ZpO-jS-mjQ">
+                                        <rect key="frame" x="20" y="20" width="93" height="131"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="171" id="OrK-1C-hWm"/>
+                                    <constraint firstAttribute="width" constant="133" id="Ucw-Z9-hka"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I3p-z8-Fdr" customClass="CSAnimationView">
+                                <rect key="frame" x="0.0" y="397" width="133" height="171"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LeftBottomHand" translatesAutoresizingMaskIntoConstraints="NO" id="RdF-cw-ZLs">
+                                        <rect key="frame" x="20" y="20" width="93" height="131"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="171" id="d4Q-8N-V2q"/>
+                                    <constraint firstAttribute="width" constant="133" id="jpO-Lq-uE7"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="type" value="bounceRight"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="delay">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIh-dn-EbM" customClass="CSAnimationView">
+                                <rect key="frame" x="144" y="352" width="133" height="171"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RightBottomPhone" translatesAutoresizingMaskIntoConstraints="NO" id="c27-h2-9VX">
+                                        <rect key="frame" x="20" y="20" width="93" height="131"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="171" id="Voa-C4-HqE"/>
+                                    <constraint firstAttribute="width" constant="133" id="x1J-ya-Ncz"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nVo-51-IlR" customClass="CSAnimationView">
+                                <rect key="frame" x="187" y="397" width="133" height="171"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RightBottomHand" translatesAutoresizingMaskIntoConstraints="NO" id="hLc-iP-GmA">
+                                        <rect key="frame" x="20" y="20" width="93" height="131"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="133" id="dYY-k7-4kz"/>
+                                    <constraint firstAttribute="height" constant="171" id="mle-lU-fXf"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="type" value="bounceLeft"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="delay">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pca-4B-TaL" customClass="CSAnimationView">
+                                <rect key="frame" x="144" y="45" width="133" height="171"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RightTopPhone" translatesAutoresizingMaskIntoConstraints="NO" id="l1i-P9-g9z">
+                                        <rect key="frame" x="20" y="20" width="93" height="131"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="171" id="DJa-fe-Fsd"/>
+                                    <constraint firstAttribute="width" constant="133" id="INd-py-FU8"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="917-7u-SRQ" customClass="CSAnimationView">
+                                <rect key="frame" x="187" y="0.0" width="133" height="171"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RightTopHand" translatesAutoresizingMaskIntoConstraints="NO" id="Mrb-0L-gnx">
+                                        <rect key="frame" x="20" y="20" width="93" height="131"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="171" id="XXf-NI-Hp4"/>
+                                    <constraint firstAttribute="width" constant="133" id="fyz-PL-OUs"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="type" value="bounceLeft"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="delay">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTf-x7-goC" customClass="CSAnimationView">
+                                <rect key="frame" x="43" y="45" width="133" height="171"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LeftTopPhone" translatesAutoresizingMaskIntoConstraints="NO" id="TtU-UV-NeC">
+                                        <rect key="frame" x="20" y="20" width="93" height="131"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="171" id="FCn-3J-64y"/>
+                                    <constraint firstAttribute="width" constant="133" id="sky-8D-30u"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AZb-3L-fEz" customClass="CSAnimationView">
+                                <rect key="frame" x="0.0" y="0.0" width="133" height="171"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LeftTopHand" translatesAutoresizingMaskIntoConstraints="NO" id="xzb-FX-VsW">
+                                        <rect key="frame" x="20" y="20" width="93" height="131"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="171" id="24X-Mq-usC"/>
+                                    <constraint firstAttribute="width" constant="133" id="NWF-62-HIq"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="type" value="bounceRight"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="delay">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYv-FX-GiQ">
+                                <rect key="frame" x="89" y="135" width="143" height="299"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="256"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.20000000300000001" green="0.2039215714" blue="0.21960784489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rpE-sn-Gl3" firstAttribute="top" secondItem="Ptj-Xs-GJg" secondAttribute="bottom" constant="45" id="2OZ-GS-uIt"/>
+                            <constraint firstAttribute="centerY" secondItem="3g6-87-sau" secondAttribute="centerY" id="3ik-YX-mg2"/>
+                            <constraint firstItem="917-7u-SRQ" firstAttribute="top" secondItem="E9l-ww-5v7" secondAttribute="bottom" id="5Zm-Hp-Q4D"/>
+                            <constraint firstAttribute="centerY" secondItem="ZYv-FX-GiQ" secondAttribute="centerY" id="6Ym-OP-reI"/>
+                            <constraint firstAttribute="trailing" secondItem="pca-4B-TaL" secondAttribute="trailing" constant="43" id="CSa-D2-Fzq"/>
+                            <constraint firstItem="KTf-x7-goC" firstAttribute="top" secondItem="E9l-ww-5v7" secondAttribute="bottom" constant="45" id="EBd-Ki-Df4"/>
+                            <constraint firstItem="KTf-x7-goC" firstAttribute="leading" secondItem="V8b-7s-Olg" secondAttribute="leading" constant="43" id="EwB-jL-7Ju"/>
+                            <constraint firstAttribute="centerX" secondItem="ZYv-FX-GiQ" secondAttribute="centerX" id="GGD-Sn-vXb"/>
+                            <constraint firstItem="AZb-3L-fEz" firstAttribute="leading" secondItem="V8b-7s-Olg" secondAttribute="leading" id="KsH-Dq-xn8"/>
+                            <constraint firstItem="pca-4B-TaL" firstAttribute="top" secondItem="E9l-ww-5v7" secondAttribute="bottom" constant="45" id="M0o-BT-Oai"/>
+                            <constraint firstItem="I3p-z8-Fdr" firstAttribute="leading" secondItem="V8b-7s-Olg" secondAttribute="leading" id="PHX-Ua-GOb"/>
+                            <constraint firstItem="rpE-sn-Gl3" firstAttribute="top" secondItem="I3p-z8-Fdr" secondAttribute="bottom" id="SqU-AR-NUy"/>
+                            <constraint firstItem="rpE-sn-Gl3" firstAttribute="top" secondItem="nVo-51-IlR" secondAttribute="bottom" id="SvK-bt-0AC"/>
+                            <constraint firstAttribute="trailing" secondItem="nVo-51-IlR" secondAttribute="trailing" id="Vcd-Hh-oMe"/>
+                            <constraint firstAttribute="trailing" secondItem="917-7u-SRQ" secondAttribute="trailing" id="gWI-JI-gBG"/>
+                            <constraint firstItem="Ptj-Xs-GJg" firstAttribute="leading" secondItem="V8b-7s-Olg" secondAttribute="leading" constant="43" id="m82-wL-s8t"/>
+                            <constraint firstItem="AZb-3L-fEz" firstAttribute="top" secondItem="E9l-ww-5v7" secondAttribute="bottom" id="rst-Re-FQn"/>
+                            <constraint firstAttribute="trailing" secondItem="gIh-dn-EbM" secondAttribute="trailing" constant="43" id="spd-gW-qNZ"/>
+                            <constraint firstItem="rpE-sn-Gl3" firstAttribute="top" secondItem="gIh-dn-EbM" secondAttribute="bottom" constant="45" id="wl9-fY-JyW"/>
+                            <constraint firstAttribute="centerX" secondItem="3g6-87-sau" secondAttribute="centerX" id="xlP-qY-hRq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Match" id="lsx-0D-OAB"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="countDownLabel" destination="ZYv-FX-GiQ" id="hFC-Me-RX5"/>
+                        <outlet property="leftBottomHandView" destination="I3p-z8-Fdr" id="soT-x5-IXC"/>
+                        <outlet property="leftBottomPhoneView" destination="Ptj-Xs-GJg" id="6Ve-7G-OpG"/>
+                        <outlet property="leftTopHandView" destination="AZb-3L-fEz" id="jQf-Ej-IUX"/>
+                        <outlet property="leftTopPhoneView" destination="KTf-x7-goC" id="pw7-5R-dRC"/>
+                        <outlet property="rightBottomHandView" destination="nVo-51-IlR" id="f6d-lu-alV"/>
+                        <outlet property="rightBottomPhoneView" destination="gIh-dn-EbM" id="hm8-vc-BsN"/>
+                        <outlet property="rightTopHandView" destination="917-7u-SRQ" id="Dii-Zx-vvl"/>
+                        <outlet property="rightTopPhoneView" destination="pca-4B-TaL" id="RvO-d5-y7k"/>
+                        <outlet property="startButton" destination="3g6-87-sau" id="2Ny-eA-W77"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4t1-FM-ghO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1062" y="198"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="LeftBottomHand" width="372" height="526"/>
+        <image name="LeftBottomPhone" width="372" height="526"/>
+        <image name="LeftTopHand" width="372" height="526"/>
+        <image name="LeftTopPhone" width="372" height="526"/>
+        <image name="RightBottomHand" width="372" height="526"/>
+        <image name="RightBottomPhone" width="372" height="526"/>
+        <image name="RightTopHand" width="372" height="526"/>
+        <image name="RightTopPhone" width="372" height="526"/>
+        <image name="StartMatchButton" width="160" height="160"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
