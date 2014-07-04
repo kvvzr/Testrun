@@ -29,19 +29,26 @@
         self.countDown = 5;
         self.sumOfColors = 0;
         
-        for (NSArray *key in settings[@"colors"]) {
-            self.sumOfColors += [(NSNumber *)settings[@"colors"][key][@"count"] intValue];
-        }
-        
         self.colors = [NSMutableArray array];
-        for (int i = 0; i < self.sumOfColors; i++) {
-            [self.colors addObject:[NSNull null]];
-        }
-        for (NSArray *key in settings[@"colors"]) {
-            [self fillColors:self.colors
-                   withColor:settings[@"colors"][key][@"color"]
-                    withTime:settings[@"colors"][key][@"time"]
-                  colorCount:[(NSNumber *)settings[@"colors"][key][@"count"] intValue]];
+        
+        if ([settings[@"mode"] isEqualToString:@"random"]) {
+            for (NSArray *key in settings[@"colors"]) {
+                self.sumOfColors += [(NSNumber *)settings[@"colors"][key][@"count"] intValue];
+            }
+            
+            for (int i = 0; i < self.sumOfColors; i++) {
+                [self.colors addObject:[NSNull null]];
+            }
+            for (NSArray *key in settings[@"colors"]) {
+                [self fillColors:self.colors
+                       withColor:settings[@"colors"][key][@"color"]
+                        withTime:settings[@"colors"][key][@"time"]
+                      colorCount:[(NSNumber *)settings[@"colors"][key][@"count"] intValue]];
+            }
+        } else {
+            NSMutableArray *colors = settings[@"colors"];
+            self.sumOfColors = (int)colors.count;
+            self.colors = colors;
         }
     }
     return self;

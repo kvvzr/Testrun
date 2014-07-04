@@ -40,6 +40,27 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="orderUpDownCell" id="Kn9-H6-bqE">
+                                <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kn9-H6-bqE" id="ruc-J9-7Jq">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xID-Da-mvK">
+                                            <rect key="frame" x="20" y="8" width="72" height="30"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <color key="textColor" red="0.19783163070000001" green="0.2031520903" blue="0.21727466579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stepper opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Bwh-5O-PZN">
+                                            <rect key="frame" x="113" y="7" width="94" height="29"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <color key="tintColor" red="0.19783163070000001" green="0.2031520903" blue="0.21727466579999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </stepper>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="b23-9E-OBb" id="Yxn-ZI-55X"/>
@@ -48,6 +69,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="zDf-6S-dLv">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" systemItem="add" id="701-Wr-0QD">
+                            <color key="tintColor" red="0.0" green="0.83657974004745483" blue="0.74327272176742554" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="touchPlusButton:" destination="b23-9E-OBb" id="puz-gf-vmN"/>
+                            </connections>
+                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="KfM-mH-ARv">
                             <rect key="frame" x="90" y="7" width="140" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -56,6 +83,9 @@
                                 <segment title="Order"/>
                             </segments>
                             <color key="tintColor" red="0.0" green="0.83657974004745483" blue="0.74327272176742554" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="modeChanged:" destination="b23-9E-OBb" eventType="valueChanged" id="Nag-sG-fZt"/>
+                            </connections>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" id="JYv-p9-a8t">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6Rs-Z2-hAE">
@@ -73,6 +103,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="plusButton" destination="701-Wr-0QD" id="PuN-9z-pYH"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y6w-FJ-bSL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
