@@ -120,8 +120,6 @@
     }else{
         [self.game end];
         
-        [[UIScreen mainScreen] setBrightness:1.0];
-        
         self.startButton.alpha = 1.0;
         [self.startButton setImage:[UIImage imageNamed:@"StartMatchButton"] forState:UIControlStateNormal];
         
